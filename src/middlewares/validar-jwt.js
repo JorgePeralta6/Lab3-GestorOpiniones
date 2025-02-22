@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-import Usuario from '../users/user.model.js';
+import User from '../users/user.model.js';
 
 export const validarJWT = async (req, res, next) => {
 
@@ -16,7 +16,7 @@ export const validarJWT = async (req, res, next) => {
         
         const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
 
-        const usuario = await Usuario.findById(uid);
+        const usuario = await User.findById(uid);
 
         if(!usuario){
             return res.status(401).json({
@@ -30,7 +30,7 @@ export const validarJWT = async (req, res, next) => {
             })
         }
 
-        req.usuario = usuario;
+        req.user = usuario;
 
         next();
     } catch (e) {
