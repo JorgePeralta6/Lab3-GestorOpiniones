@@ -32,7 +32,7 @@ const UserSchema = Schema({
     role: {
         type: String,
         required: false,
-        enum: ['Cliente', 'Admin'], // Agrega 'Admin' como opción válida para el rol
+        enum: ['Cliente', 'Admin'],
     },
     estado: {
         type: Boolean,
@@ -45,12 +45,10 @@ const UserSchema = Schema({
     }
 );
 
-// Método para ajustar la salida de JSON
 UserSchema.methods.toJSON = function () {
-    const { __v, password, _id, role, ...usuario } = this.toObject(); // Extraemos los campos a ocultar
+    const { __v, password, _id, role, ...usuario } = this.toObject(); 
     usuario.uid = _id;
 
-    // Oculta el campo `role` si no es administrador
     if (role !== 'Admin') {
         delete usuario.role;
     }
