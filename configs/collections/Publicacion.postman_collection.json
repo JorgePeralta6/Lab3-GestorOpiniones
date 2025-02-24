@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "6639723e-2eb4-4d0b-bd27-c43ecec464c4",
+		"name": "Publicacion",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37413959"
+	},
+	"item": [
+		{
+			"name": "AgregarPublicacion",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTQ2MTgwMDBhOTMwYTYyNTg5NjIiLCJpYXQiOjE3NDAzNzI0NjcsImV4cCI6MTc0MDM3NjA2N30.1zidQJrCesiqCjgLw9IfCmgg5IuAlUuaz9C-3ZGTMyU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Juegos Nintendo Switch\",\r\n    \"title\": \"Vendo juegos usados\",\r\n    \"maintext\": \"Vendo el super smash bros ultimate\",\r\n    \"email\": \"amartinez@kinal.edu.gt\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorOpinion/v1/publication",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorOpinion",
+						"v1",
+						"publication"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPublicacion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/gestorOpinion/v1/publication",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorOpinion",
+						"v1",
+						"publication"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdatePublicacion",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTQ2MTgwMDBhOTMwYTYyNTg5NjIiLCJpYXQiOjE3NDAzNzI0NjcsImV4cCI6MTc0MDM3NjA2N30.1zidQJrCesiqCjgLw9IfCmgg5IuAlUuaz9C-3ZGTMyU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Juegos Nintendo Switch\",\r\n    \"title\": \"Vendo juegos nuevos\",\r\n    \"maintext\": \"Vendo el mario kart\",\r\n    \"email\": \"amartinez@kinal.edu.gt\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorOpinion/v1/publication/67bbfd925265dc5d9dffcdc3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorOpinion",
+						"v1",
+						"publication",
+						"67bbfd925265dc5d9dffcdc3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeletePublication",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTQ2MTgwMDBhOTMwYTYyNTg5NjIiLCJpYXQiOjE3NDAzNzQ5MzEsImV4cCI6MTc0MDM3ODUzMX0.H16g5kuZZOMPW4SMe5NBSaEsRoUEqF0zRIuoNNt5V5Q",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/gestorOpinion/v1/publication/67bc039e3e86a2148d036347",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorOpinion",
+						"v1",
+						"publication",
+						"67bc039e3e86a2148d036347"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

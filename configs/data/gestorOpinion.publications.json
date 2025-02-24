@@ -1,0 +1,45 @@
+[{
+  "_id": {
+    "$oid": "67bcd5a3a1264870e17ed3d8"
+  },
+  "category": {
+    "$oid": "67b94b5c3b0ede87f090f87b"
+  },
+  "title": "Vendo juegos sellados1",
+  "maintext": "Vendo el mario oddysey",
+  "author": {
+    "$oid": "67b814618000a930a6258962"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2025-02-24T20:25:07.875Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-24T22:23:37.063Z"
+  },
+  "comments": [
+    {
+      "$oid": "67bcf16985e9609cc4039870"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "67bcd86d9b19357c94081252"
+  },
+  "category": {
+    "$oid": "67b94b5c3b0ede87f090f87b"
+  },
+  "title": "Vendo controles ",
+  "maintext": "Vendo controles chinos marca Sony (CHINO)",
+  "author": {
+    "$oid": "67b814618000a930a6258962"
+  },
+  "status": false,
+  "createdAt": {
+    "$date": "2025-02-24T20:37:01.076Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-24T20:42:15.372Z"
+  }
+}]

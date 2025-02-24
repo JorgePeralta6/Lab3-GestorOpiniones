@@ -9,4 +9,16 @@
   },
   "status": true,
   "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67bcf9d8a41da878865d4b72"
+  },
+  "name": "Deportes",
+  "text": "Viva el futbol",
+  "admin": {
+    "$oid": "67b8135951c1707f2e0eb1ec"
+  },
+  "status": true,
+  "__v": 0
 }]

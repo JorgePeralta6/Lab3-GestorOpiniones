@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "727af46f-cf26-415c-b20c-8a37dea42ff8",
+		"name": "Comentario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37413959"
+	},
+	"item": [
+		{
+			"name": "AgregarComentario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTQ2MTgwMDBhOTMwYTYyNTg5NjIiLCJpYXQiOjE3NDAyODI1NjUsImV4cCI6MTc0MDI4NjE2NX0.oIROSHls3P5mD05aL9NMDtQo9gxF8nydd-CqWq59qwo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comment\": \"Borra la cuenta\",\r\n    \"email\": \"amartinez@kinal.edu.gt\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorOpinion/v1/comment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorOpinion",
+						"v1",
+						"comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetComentario",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteComentario",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTQ2MTgwMDBhOTMwYTYyNTg5NjIiLCJpYXQiOjE3NDAyODM2MzUsImV4cCI6MTc0MDI4NzIzNX0.W-hD9ZmFck1_jv7SU6sUWW7mnQhELPFBctyhyjDFWe0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/gestorOpinion/v1/comment/67ba9e4974314bd9304deda6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorOpinion",
+						"v1",
+						"comment",
+						"67ba9e4974314bd9304deda6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateComentario",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTQ2MTgwMDBhOTMwYTYyNTg5NjIiLCJpYXQiOjE3NDAyODQzMzMsImV4cCI6MTc0MDI4NzkzM30.MwyhKJUj3FMHJ8n0p3rKwxmxFZeob18orQMB3ihHrSo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comment\": \"Borra la cuenta\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorOpinion/v1/comment/67ba9d85059c699e115a7cca",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorOpinion",
+						"v1",
+						"comment",
+						"67ba9d85059c699e115a7cca"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

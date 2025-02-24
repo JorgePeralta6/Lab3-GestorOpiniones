@@ -1,0 +1,57 @@
+[{
+  "_id": {
+    "$oid": "67bce7d041cd2913963e649a"
+  },
+  "publicationC": {
+    "$oid": "67bcd5a3a1264870e17ed3d8"
+  },
+  "comment": "Pido",
+  "author": {
+    "$oid": "67ba9eb474314bd9304dedad"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2025-02-24T21:42:40.864Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-24T21:42:40.864Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67bce807d53611d1d466a7e9"
+  },
+  "publicationC": {
+    "$oid": "67bcd5a3a1264870e17ed3d8"
+  },
+  "comment": "Borra la cuenta",
+  "author": {
+    "$oid": "67ba9eb474314bd9304dedad"
+  },
+  "status": false,
+  "createdAt": {
+    "$date": "2025-02-24T21:43:35.670Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-24T21:44:42.842Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67bcf16985e9609cc4039870"
+  },
+  "publicationC": {
+    "$oid": "67bcd5a3a1264870e17ed3d8"
+  },
+  "comment": "PRECIOSSS",
+  "author": {
+    "$oid": "67ba9eb474314bd9304dedad"
+  },
+  "status": false,
+  "createdAt": {
+    "$date": "2025-02-24T22:23:37.056Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-24T22:30:12.409Z"
+  }
+}]
