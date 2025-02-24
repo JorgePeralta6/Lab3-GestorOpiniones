@@ -1,6 +1,7 @@
 import User from '../users/user.model.js';
 import Category from '../category/category.model.js'
 import Comment from '../comments/comment.model.js'
+import Publication from '../publications/publication.model.js'
 
 export const esRoleValido = async (role = '') => {
 
@@ -42,6 +43,15 @@ export const existeComentario = async (id = '') => {
     const existeComentario = await Comment.findById(id);
 
     if (!existeComentario) {
+        throw new Error(`El ID ${id} no existe en la base de datos`);
+    }
+};
+
+export const existePublicacion = async (id = '') => {
+
+    const existePublicacion = await Publication.findById(id);
+
+    if (!existePublicacion) {
         throw new Error(`El ID ${id} no existe en la base de datos`);
     }
 };
