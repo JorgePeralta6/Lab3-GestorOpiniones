@@ -1,16 +1,16 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import {deletePublication, updatePublication, getPublication, savePublication, addComment } from "./comment.controller.js";
+import { deletePublication, updatePublication, getPublication, savePublication, addComment } from "./publication.controller.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
-import { validarJWT } from "../middlewares/validar-jwt.js"; 
-import { existePublicacion } from "../helpers/db-validator.js";
+import { validarJWT } from "../middlewares/validar-jwt.js";
+import { existePublicacion, existeUsuarioById } from "../helpers/db-validator.js";
 
 const router = Router();
 
 router.post(
     "/",
     [
-        validarJWT, 
+        validarJWT,
         validarCampos
     ],
     savePublication
@@ -21,7 +21,7 @@ router.get("/", getPublication)
 router.delete(
     "/:id",
     [
-        validarJWT, 
+        validarJWT,
         check("id").custom(existePublicacion),
         validarCampos
     ],
@@ -31,7 +31,7 @@ router.delete(
 router.put(
     "/:id",
     [
-        validarJWT, 
+        validarJWT,
         check("id").custom(existePublicacion),
         validarCampos
     ],

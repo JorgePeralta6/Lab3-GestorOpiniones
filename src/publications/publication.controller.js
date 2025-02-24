@@ -147,7 +147,7 @@ export const updatePublication = async (req, res) => {
     }
 }
 
-export const publicarComentario = async (req, res) => {
+export const addComment = async (req, res) => {
     try {
         const { id } = req.params;
         const data = req.body;

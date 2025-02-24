@@ -110,7 +110,7 @@ export const deleteComment = async (req, res) => {
 
 
 
-export const addComment = async (req, res) => {
+export const updateComment = async (req, res) => {
     try {
         const { id } = req.params;
         const userId = req.user._id;
