@@ -2,6 +2,7 @@
 
 import mongoose from "mongoose";
 import User from "../src/users/user.model.js";
+import Category from "../src/category/category.model.js"
 import argon2 from 'argon2';
 
 
@@ -61,5 +62,29 @@ export const defaultAdmin = async() => {
 
     } catch (error) {
         console.log("Error al crear al administrador", error.message);
+    }
+}
+
+export const createCategoryd = async() => {
+    try {
+        const categoryExists = await Category.findOne({ name: "Deportes"});
+
+        if (!categoryExists) {
+
+            const newCategory = new Category({
+                name: "Deportes",
+                text: "Viva el futbol",
+                admin: "67b8135951c1707f2e0eb1ec",
+                status: true
+            });
+
+            await newCategory.save();
+            console.log("Categoria creado con exito");
+        }else{
+            console.log("Ya hay categoria existente");
+        }
+
+    } catch (error) {
+        console.log("Error al crear la categoria", error.message);
     }
 }

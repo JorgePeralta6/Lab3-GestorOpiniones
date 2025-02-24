@@ -16,7 +16,7 @@ const CommentsSchema = Schema({
         ref: 'user',
         required: true
     },
-    state: {
+    status: {
         type: Boolean,
         default: true,
     }
@@ -27,4 +27,4 @@ const CommentsSchema = Schema({
     }
 );
 
-export default model('Comments', CommentsSchema)
+export default model('Comment', CommentsSchema)

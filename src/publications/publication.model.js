@@ -20,7 +20,12 @@ const PublicationSchema = Schema({
         ref: 'user',
         required: true
     },
-    state: {
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment',
+        required: false
+    }],
+    status: {
         type: Boolean,
         default: true,
     }

@@ -3,45 +3,31 @@ import User from '../users/user.model.js';
 import Publication from '../publications/publication.model.js';
 import Comment from './comment.model.js'
 
-export const saveComment = async (req, res) => {
+export const saveComment = async (req, res) =>{
     try {
-        
         const data = req.body;
-
-        const plubication = await Publication.findOne({title: data.title});
-        const user = await User.findOne({email: data.email});   
-
-        if(!user){
-            return res.status(404).json({
-                succes: false,
-                message: 'Usuario no encontrado',
-                error: error.message
-            })
-        }if(!plubication){
-            return res.status(404).json({
-                succes: false,
-                message: 'Publicacion no encontrado',
-                error: error.message
-            })
-        }
-
-        const comment = new Comment({
-            publicationC: plubication._id,
-            ...data,
-            author: user._id,
-        });
-
-        await comment.save();
-
-        res.status(200).json({
-            succes: true,
-            comment
-        });
-
+        const publication = await Publication.findOne({title: data.title})
+        const user = await User.findOne({email: data.email});
+        const comment = await Comment.create({
+            publicationC: publication._id,
+            comment: data.comment,
+            author: user._id
+        })
+ 
+        await Publication.findByIdAndUpdate(publication._id, {
+            $push: { comments: comment._id}
+        })
+ 
+        return res.status(200).json({
+            msg: 'Comment registered successfully!',
+            commentDetails:{
+                comment: comment.text
+            }
+        })
     } catch (error) {
         res.status(500).json({
-            succes: false,
-            msg: 'Error al crear comentario',
+            success: false,
+            msg:'Error to create the comment',
             error: error.message
         })
     }
@@ -49,14 +35,14 @@ export const saveComment = async (req, res) => {
 
 export const getComment = async (req, res) => {
     const {limite = 10, desde = 0} = req.query;
-    const query = {state: true};
+    const query = {status: true};
 
     try {
         
 
         const comment = await Comment.find(query)
-            .populate({path: 'publicationC', match: { state: true }, select: 'title' })
-            .populate({path: 'author', match: { state: true }, select: 'name' })
+            .populate({path: 'publicationC', match: { status: true }, select: 'title' })
+            .populate({path: 'author', match: { estado: true }, select: 'name' })
             .skip(Number(desde))
             .limit(Number(limite));
 
@@ -90,14 +76,14 @@ export const deleteComment = async (req, res) => {
             });
         }
 
-        if (comment.author.toString() !== req.usuario.id) {
+        if (comment.author.toString() !== req.user.id) {
             return res.status(404).json({
                 succes: false,
                 message: 'Tu no puedes eliminar este comentario'
             });
         }
 
-        await Comment.findByIdAndUpdate(id, {state: false});
+        await Comment.findByIdAndUpdate(id, {status: false});
 
         res.status(200).json({
             succes: true,
@@ -127,7 +113,7 @@ export const updateComment = async (req, res  = response) => {
             });
         }
 
-        if (comment1.author.toString() !== req.usuario.id) {
+        if (comment1.author.toString() !== req.user.id) {
             return res.status(404).json({
                 succes: false,
                 message: 'Tu no puedes actualizar este comentario'

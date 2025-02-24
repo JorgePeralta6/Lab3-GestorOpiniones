@@ -49,15 +49,16 @@ export const addPublication = async (req, res) => {
 
 export const publicationsView = async (req, res) => {
     const {limite = 10, desde = 0} = req.query;
-    const query = {state: true};
+    const query = {status: true};
 
     try {
         
         const [total, publication] = await Promise.all([
             Publication.countDocuments(query),
             Publication.find(query)
-            .populate({path: 'category', match: { state: true }, select: 'name' })
-            .populate({path: 'author', match: { state: true }, select: 'name' })
+            .populate({path: 'category', match: { status: true }, select: 'name' })
+            .populate({ path: 'author', match: { estado: true }, select: 'name' })
+            .populate({ path: 'comments', match: { status: true }, select: 'comment' })
             .skip(Number(desde))
             .limit(Number(limite))
         ])
@@ -90,14 +91,14 @@ export const deletePublication = async (req, res) => {
             });
         }
 
-        if (publication.author.toString() !== req.usuario.id) {
+        if (publication.author.toString() !== req.user.id) {
             return res.status(404).json({
                 succes: false,
                 message: 'Tu no puedes eliminar esta publicacion'
             });
         }
 
-        await Publication.findByIdAndUpdate(id, {state: false});
+        await Publication.findByIdAndUpdate(id, {status: false});
 
         res.status(200).json({
             succes: true,
@@ -127,7 +128,7 @@ export const updatePublication = async (req, res  = response) => {
             });
         }
 
-        if (publication1.author.toString() !== req.usuario.id) {
+        if (publication1.author.toString() !== req.user.id) {
             return res.status(404).json({
                 succes: false,
                 message: 'Tu no puedes editar esta publicacion'

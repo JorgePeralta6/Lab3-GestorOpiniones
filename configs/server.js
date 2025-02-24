@@ -6,6 +6,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import { dbConnection } from './mongo.js';
 import { defaultAdmin } from './mongo.js';
+import { createCategoryd } from './mongo.js';
 import limiter from '../src/middlewares/validar-cant-peticiones.js';
 import authRoutes from '../src/auth/auth.routes.js'
 import userRoutes from '../src/users/user.routes.js'
@@ -34,6 +35,7 @@ const conectarDB = async () => {
     try{
         await dbConnection();
         await defaultAdmin();
+        await createCategoryd();
         console.log("Conexión a la base de datos exitosa");
     }catch(error){
         console.error('Error conectando a la base de datos', error);
@@ -43,7 +45,7 @@ const conectarDB = async () => {
 
 export const initServer = async () => {
     const app = express();
-    const port = process.env.PORT || 3000;
+    const port = process.env.PORT || 3001;
 
     try {
         middlewares(app);

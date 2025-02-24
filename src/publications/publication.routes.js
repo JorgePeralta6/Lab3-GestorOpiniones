@@ -4,7 +4,7 @@ import { validarCampos } from '../middlewares/validar-campos.js';
 import { validarJWT } from "../middlewares/validar-jwt.js";
 
 
-import { addPublication, publicationsView, deletePublication, updatePublication } from './publications.controller.js';
+import { addPublication, publicationsView, deletePublication, updatePublication } from './publication.controller.js';
 
 const router = Router();
 
