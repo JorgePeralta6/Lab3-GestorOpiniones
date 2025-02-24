@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "70085f6a-e141-419e-9180-ce9c0e7fa4e7",
+		"name": "UserOpinion",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37413959"
+	},
+	"item": [
+		{
+			"name": "AgregarUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Jorge\",\r\n    \"lastname\": \"Peralta\",\r\n    \"username\": \"jperalta\",\r\n    \"email\": \"jperalta@kinal.edu.gt\",\r\n    \"password\": \"12345678\",\r\n    \"phone\": \"47888041\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorOpinion/v1/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorOpinion",
+						"v1",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/gestorOpinion/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorOpinion",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Andres\",\r\n    \"lastname\": \"Martinez\",\r\n    \"username\": \"amartinez\",\r\n    \"email\": \"amartinez@kinal.edu.gt\",\r\n    \"phone\": \"58999152\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorOpinion/v1/users/67b814618000a930a6258962",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorOpinion",
+						"v1",
+						"users",
+						"67b814618000a930a6258962"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoginUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"adminUse\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorOpinion/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorOpinion",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdatePassword",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTQ2MTgwMDBhOTMwYTYyNTg5NjIiLCJpYXQiOjE3NDAxMTgxNjUsImV4cCI6MTc0MDEyMTc2NX0.h3Ow0LUiIbMMfk1H1KSYUMhq4cBqbbNiA2jCX4MULbc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"oldPassword\": \"12345678\",\r\n    \"newPassword\": \"12345677\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorOpinion/v1/users/newpassword/67b814618000a930a6258962",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorOpinion",
+						"v1",
+						"users",
+						"newpassword",
+						"67b814618000a930a6258962"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

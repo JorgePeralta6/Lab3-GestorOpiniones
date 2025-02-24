@@ -1,0 +1,12 @@
+[{
+  "_id": {
+    "$oid": "67b94b5c3b0ede87f090f87b"
+  },
+  "name": "Juegos Nintendo Switch",
+  "text": "Los mejores juegos de la consola portatil de nintendo",
+  "admin": {
+    "$oid": "67b8135951c1707f2e0eb1ec"
+  },
+  "status": true,
+  "__v": 0
+}]
