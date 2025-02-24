@@ -100,6 +100,7 @@ export const deleteComment = async (req, res) => {
         });
 
     } catch (error) {
+
         res.status(500).json({
             success: false,
             message: "Error al eliminar comentario",
@@ -126,7 +127,7 @@ export const updateComment = async (req, res) => {
 
         const updatedComment = await Comment.findByIdAndUpdate(id, req.body, { new: true });
 
-        res.status(200).json({
+        res.json({
             success: true,
             msg: "Comentario actualizado exitosamente",
             comment: updatedComment,
