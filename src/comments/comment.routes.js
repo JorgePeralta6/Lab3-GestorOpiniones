@@ -1,42 +1,45 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import {deleteComment, updateComment, getComments, saveComment } from "./comment.controller.js";
-import { validarCampos } from "../middlewares/validar-campos.js";
-import { validarJWT } from "../middlewares/validar-jwt.js"; 
-import { existeComentario } from "../helpers/db-validator.js";
+import { validarCampos } from '../middlewares/validar-campos.js';
+import { validarJWT } from "../middlewares/validar-jwt.js";
+import { saveComment, getComment, deleteComment, updateComment } from './comment.controller.js';
 
 const router = Router();
 
 router.post(
     "/",
     [
-        validarJWT, 
+        validarJWT,
+        check('email', 'This is not a valid email').not().isEmpty(),
         validarCampos
     ],
     saveComment
-)
+);
 
-router.get("/", getComments)
+router.get("/", getComment);
+
 
 router.delete(
     "/:id",
     [
-        validarJWT, 
-        check("id").custom(existeComentario),
-        validarCampos
+        validarJWT,
+        check("id", "It is not a valid id").isMongoId(),
+        validarCampos  
     ],
     deleteComment
 );
 
+
 router.put(
     "/:id",
     [
-        validarJWT, 
-        check("id").custom(existeComentario),
-        check("comment", "El comentario es obligatorio").not().isEmpty(),
-        validarCampos
+        validarJWT,
+        check("id", "It is not a valid id").isMongoId(),
+        validarCampos 
     ],
     updateComment
 );
+
+    
 
 export default router;

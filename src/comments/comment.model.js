@@ -1,25 +1,30 @@
-import { Schema, model } from "mongoose";
+import {Schema, model} from "mongoose";
 
-const CommentSchema = new Schema(
-    {
-        comment: {
-            type: String,
-            required: true,
-        },
-        author: {
-            type: Schema.Types.ObjectId,
-            ref: 'user',
-            required: true
-        },
-        status: {
-            type: Boolean,
-            default: true,
-        },
+const CommentsSchema = Schema({
+
+    publicationC: {
+        type: Schema.Types.ObjectId,
+        ref: 'Publication',
+        required: true
     },
+    comment: {
+        type: String,
+        required: true,
+    },
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
+        required: true
+    },
+    state: {
+        type: Boolean,
+        default: true,
+    }
+},
     {
         timestamps: true,
-        versionKey: false,
+        versionKey: false
     }
 );
 
-export default model("Comment", CommentSchema);
+export default model('Comments', CommentsSchema)

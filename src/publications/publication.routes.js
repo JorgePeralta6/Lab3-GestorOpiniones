@@ -1,9 +1,10 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { deletePublication, updatePublication, getPublication, savePublication, addComment } from "./publication.controller.js";
-import { validarCampos } from "../middlewares/validar-campos.js";
+import { validarCampos } from '../middlewares/validar-campos.js';
 import { validarJWT } from "../middlewares/validar-jwt.js";
-import { existePublicacion, existeUsuarioById } from "../helpers/db-validator.js";
+
+
+import { addPublication, publicationsView, deletePublication, updatePublication } from './publications.controller.js';
 
 const router = Router();
 
@@ -11,19 +12,20 @@ router.post(
     "/",
     [
         validarJWT,
+        check('email', 'This is not a valid email').not().isEmpty(),
         validarCampos
     ],
-    savePublication
-)
+    addPublication
+);
 
-router.get("/", getPublication)
+router.get("/", publicationsView);
 
 router.delete(
     "/:id",
     [
         validarJWT,
-        check("id").custom(existePublicacion),
-        validarCampos
+        check("id", "It is not a valid id").isMongoId(),
+        validarCampos  
     ],
     deletePublication
 );
@@ -32,20 +34,11 @@ router.put(
     "/:id",
     [
         validarJWT,
-        check("id").custom(existePublicacion),
-        validarCampos
+        check("id", "It is not a valid id").isMongoId(),
+        validarCampos 
     ],
     updatePublication
 );
-
-router.put(
-    "/agregarComentario/:id",
-    [
-        check("id", "No es el ID correcto").isMongoId(),
-        check("id").custom(existeUsuarioById),
-        validarCampos
-    ],
-    addComment
-)
+    
 
 export default router;

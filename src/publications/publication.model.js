@@ -15,15 +15,10 @@ const PublicationSchema = Schema({
         type: String,
         required: true
     },
-    user: {
+    author: {
         type: Schema.Types.ObjectId,
         ref: 'user',
         required: true
-    },
-    comment: {
-        type: Schema.Types.ObjectId,
-        ref: 'Comment',
-        required: false
     },
     state: {
         type: Boolean,

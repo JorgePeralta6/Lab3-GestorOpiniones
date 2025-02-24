@@ -1,142 +1,152 @@
-import { response, request } from "express";
-import Comment from "./comment.model.js";
-import User from '../users/user.model.js'
+import { response } from "express";
+import User from '../users/user.model.js';
+import Publication from '../publications/publication.model.js';
+import Comment from './comment.model.js'
 
 export const saveComment = async (req, res) => {
     try {
-
+        
         const data = req.body;
-        const user = await User.findOne({ email: data.email });
 
-        if (!user) {
+        const plubication = await Publication.findOne({title: data.title});
+        const user = await User.findOne({email: data.email});   
+
+        if(!user){
             return res.status(404).json({
-                success: false,
-                message: 'Propietario no encontrado'
+                succes: false,
+                message: 'Usuario no encontrado',
+                error: error.message
+            })
+        }if(!plubication){
+            return res.status(404).json({
+                succes: false,
+                message: 'Publicacion no encontrado',
+                error: error.message
             })
         }
 
         const comment = new Comment({
+            publicationC: plubication._id,
             ...data,
-            author: user._id
+            author: user._id,
         });
 
         await comment.save();
 
         res.status(200).json({
-            success: true,
+            succes: true,
+            comment
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            succes: false,
+            msg: 'Error al crear comentario',
+            error: error.message
+        })
+    }
+}
+
+export const getComment = async (req, res) => {
+    const {limite = 10, desde = 0} = req.query;
+    const query = {state: true};
+
+    try {
+        
+
+        const comment = await Comment.find(query)
+            .populate({path: 'publicationC', match: { state: true }, select: 'title' })
+            .populate({path: 'author', match: { state: true }, select: 'name' })
+            .skip(Number(desde))
+            .limit(Number(limite));
+
+        const total = await Comment.countDocuments(query);
+
+        res.status(200).json({
+            succes: true,
+            total,
+            comment
+        })
+    } catch (error) {
+        res.status(500).json({
+            succes: false,
+            msg: 'Error al obtener comentario',
+            error: error.message
+        })
+    }
+} 
+
+export const deleteComment = async (req, res) => {
+
+    const { id } = req.params;
+
+    try {
+        const comment = await Comment.findById(id);
+
+        if (!comment) {
+            return res.status(404).json({
+                succes: false,
+                message: 'Comentario no encontrado'
+            });
+        }
+
+        if (comment.author.toString() !== req.usuario.id) {
+            return res.status(404).json({
+                succes: false,
+                message: 'Tu no puedes eliminar este comentario'
+            });
+        }
+
+        await Comment.findByIdAndUpdate(id, {state: false});
+
+        res.status(200).json({
+            succes: true,
+            message: 'Comentario eliminado'
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            succes: false,
+            msg: 'Error al eliminar comentario',
+            error: error.message
+        })
+    }
+}
+
+
+export const updateComment = async (req, res  = response) => {
+    try {
+        const {id} = req.params;
+        const {_id, email, title, ...data} = req.body;
+        const comment1 = await Comment.findById(id);
+
+        if (!comment1) {
+            return res.status(404).json({
+                succes: false,
+                message: 'Comentario no encontrado'
+            });
+        }
+
+        if (comment1.author.toString() !== req.usuario.id) {
+            return res.status(404).json({
+                succes: false,
+                message: 'Tu no puedes actualizar este comentario'
+            });
+        }
+
+        const comment = await Comment.findByIdAndUpdate(id, data, {new: true});
+
+        res.status(200).json({
+            succes: true,
+            msj: 'Comentario actualizada exitosamente',
             comment
         })
 
     } catch (error) {
         res.status(500).json({
-            success: false,
-            message: 'Error al guardar mascota',
-            error
-        })
-    }
-}
-
-export const getComments = async (req, res) => {
-    const { limite = 10, desde = 0 } = req.query;
-    const query = { status: true };
-
-    try {
-
-        const comments = await Comment.find(query)
-            .skip(Number(desde))
-            .limit(Number(limite));
-
-        const commentWithOwnerNames = await Promise.all(comments.map(async (comment) => {
-            const owner = await User.findById(comment.author);
-            return {
-                ...comment.toObject(),
-                author: owner ? owner.name : "Usuario no encontrado"
-            }
-        }))
-
-        const total = await Comment.countDocuments(query);
-
-        res.status(200).json({
-            success: true,
-            total,
-            comments: commentWithOwnerNames
-        })
-
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: "Error al obtener el comentario",
-            error
-        });
-    }
-};
-
-export const deleteComment = async (req, res) => {
-    try {
-        const { id } = req.params;
-        console.log(req.user)
-        if (!req.user || !req.user._id) {
-            return res.status(401).json({
-                success: false,
-                message: "Usuario no autenticado",
-            });
-        }
-        const userId = req.user._id;
-
-        const comment = await Comment.findOne({ _id: id, author: userId });
-
-        if (!comment) {
-            return res.status(403).json({
-                success: false,
-                message: "No puedes eliminar este comentario",
-            });
-        }
-
-        await Comment.findByIdAndDelete(id);
-
-        res.status(200).json({
-            success: true,
-            message: "Comentario eliminado exitosamente",
-        });
-
-    } catch (error) {
-
-        res.status(500).json({
-            success: false,
-            message: "Error al eliminar comentario",
+            succes: false,
+            msj: "Error al actualizar",
             error: error.message
-        });
+        })
     }
-};
-
-
-
-export const updateComment = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const userId = req.user._id;
-
-        const comment = await Comment.findOne({ _id: id, author: userId });
-
-        if (!comment) {
-            return res.status(403).json({
-                success: false,
-                msg: "No puedes editar este comentario",
-            });
-        }
-
-        const updatedComment = await Comment.findByIdAndUpdate(id, req.body, { new: true });
-
-        res.json({
-            success: true,
-            msg: "Comentario actualizado exitosamente",
-            comment: updatedComment,
-        });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            success: false,
-            msg: "Error al actualizar el comentario",
-        });
-    }
-};
+}  

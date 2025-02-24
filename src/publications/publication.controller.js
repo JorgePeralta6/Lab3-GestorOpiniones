@@ -1,29 +1,26 @@
-import { response, request } from "express";
-import { hash } from "argon2";
-import User from "../users/user.model.js";
-import Comment from "../comments/comment.model.js";
-import Category from "../category/category.model.js"
-import Publication from "./publication.model.js"
+import { response } from "express";
+import Category from '../category/category.model.js';
+import User from '../users/user.model.js';
+import Publication from './publication.model.js'
 
-export const savePublication = async (req, res) => {
+export const addPublication = async (req, res) => {
     try {
-
+        
         const data = req.body;
 
-        const category = await Category.findOne({ name: data.name });
-        const user = await User.findOne({ email: data.email });
+        const category = await Category.findOne({name: data.name});
+        const user = await User.findOne({email: data.email});   
 
-        if (!user) {
+        if(!user){
             return res.status(404).json({
                 succes: false,
-                message: 'User not found',
+                message: 'Usuario no encontrado',
                 error: error.message
             })
-
-        } if (!category) {
+        }if(!category){
             return res.status(404).json({
                 succes: false,
-                message: 'Category not found',
+                message: 'Categoria no encontrada',
                 error: error.message
             })
         }
@@ -31,7 +28,7 @@ export const savePublication = async (req, res) => {
         const publication = new Publication({
             category: category._id,
             ...data,
-            user: user._id,
+            author: user._id,
         });
 
         await publication.save();
@@ -44,25 +41,25 @@ export const savePublication = async (req, res) => {
     } catch (error) {
         res.status(500).json({
             succes: false,
-            msg: 'Error creating publication',
+            msg: 'Error al crear la publicacion',
             error: error.message
         })
     }
 }
 
-export const getPublication = async (req, res) => {
-    const { limite = 10, desde = 0 } = req.query;
-    const query = { state: true };
+export const publicationsView = async (req, res) => {
+    const {limite = 10, desde = 0} = req.query;
+    const query = {state: true};
 
     try {
-
+        
         const [total, publication] = await Promise.all([
             Publication.countDocuments(query),
             Publication.find(query)
-                .populate({ path: 'category', match: { state: true }, select: 'name' })
-                .populate({ path: 'user', match: { state: true }, select: 'name' })
-                .skip(Number(desde))
-                .limit(Number(limite))
+            .populate({path: 'category', match: { state: true }, select: 'name' })
+            .populate({path: 'author', match: { state: true }, select: 'name' })
+            .skip(Number(desde))
+            .limit(Number(limite))
         ])
 
         res.status(200).json({
@@ -73,110 +70,83 @@ export const getPublication = async (req, res) => {
     } catch (error) {
         res.status(500).json({
             succes: false,
-            msg: 'Error getting publications',
+            msg: 'Error al obtener la publicacion',
             error: error.message
         })
     }
-}
+} 
 
 export const deletePublication = async (req, res) => {
+
+    const { id } = req.params;
+
     try {
-        const { id } = req.params;
-
-        if (!req.user || !req.user._id) {
-            return res.status(401).json({
-                success: false,
-                message: "Usuario no autenticado",
-            });
-        }
-        const userId = req.user._id;
-
-        const publication = await Publication.findOne({ _id: id, user: userId });
+        const publication = await Publication.findById(id);
 
         if (!publication) {
-            return res.status(403).json({
-                success: false,
-                message: "No puedes eliminar este comentario"
-            });
-        }
-
-        await Publication.findByIdAndDelete(id);
-
-        res.status(200).json({
-            success: true,
-            message: "Publicacion eliminado exitosamente",
-        });
-
-    } catch (error) {
-        res.status(500).json({
-            succes: false,
-            msg: 'Error al eliminar publicacion',
-            error: error.message
-        })
-    }
-}
-
-
-export const updatePublication = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const userId = req.user._id;
-
-        const publication = await Publication.findOne({ _id: id, user: userId });
-
-        if (!publication) {
-            return res.status(403).json({
+            return res.status(404).json({
                 succes: false,
-                message: 'No puedes editar esta publicacion',
+                message: 'Publicacion no encontrada'
             });
         }
 
-        const updatedPublication = await Publication.findByIdAndUpdate(id, req.body, {new: true});
+        if (publication.author.toString() !== req.usuario.id) {
+            return res.status(404).json({
+                succes: false,
+                message: 'Tu no puedes eliminar esta publicacion'
+            });
+        }
+
+        await Publication.findByIdAndUpdate(id, {state: false});
 
         res.status(200).json({
             succes: true,
-            msg: 'Publicacion actualizado exitosamente',
-            publication: updatedPublication,
-        });
+            message: 'Publicacion eliminada'
+        })
+
     } catch (error) {
-        console.error(error);
         res.status(500).json({
             succes: false,
-            msg: "Error al actualizar la publicacion",
+            msg: 'Error al eliminar la publicacion',
+            error: error.message
         })
     }
 }
 
-export const addComment = async (req, res) => {
+
+export const updatePublication = async (req, res  = response) => {
     try {
-        const { id } = req.params;
-        const data = req.body;
+        const {id} = req.params;
+        const {_id, email, ...data} = req.body;
+        const publication1 = await Publication.findById(id);
 
-        const comment1 = await Comment.findOne({ comment: data.comment });
-
-        if (!comment1) {
+        if (!publication1) {
             return res.status(404).json({
                 succes: false,
-                message: 'No se encontro el comentario'
-            })
+                message: 'Publicacion no encontrado'
+            });
         }
 
-        const updatedComment = await Comment.findByIdAndUpdate(id).populate({ path: 'comment', match: { status: true }, select: 'comment author' });
+        if (publication1.author.toString() !== req.usuario.id) {
+            return res.status(404).json({
+                succes: false,
+                message: 'Tu no puedes editar esta publicacion'
+            });
+        }
 
-        updatedComment.comment.push([comment1._id]);
-        await updatedComment.save();
+        const publication = await Publication.findByIdAndUpdate(id, data, {new: true});
 
         res.status(200).json({
-            success: true,
-            message: 'Comentario asignado correctamente',
-            user: updatedComment
-        });
+            succes: true,
+            msj: 'Publicacion actualizada exitosamente',
+            publication
+        })
 
     } catch (error) {
         res.status(500).json({
             succes: false,
-            msg: 'Error al agregar el comentario',
-            error
+            msj: "Error al actualizar la publicacion",
+            error: error.message
         })
     }
-}
+} 
