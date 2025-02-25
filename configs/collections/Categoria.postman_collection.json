@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c9ed12f0-273b-4738-825e-d48e9b85c374",
+		"_postman_id": "a88d28d0-cacd-40bf-9481-d1b9a325531d",
 		"name": "Categoria",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "37413959"
@@ -13,13 +13,13 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTM1OTUxYzE3MDdmMmUwZWIxZWMiLCJpYXQiOjE3NDAxOTYyNjUsImV4cCI6MTc0MDE5OTg2NX0.vPOstRK-34KrJmjdNkiPL_8THBSRn5nPhHBMGEa8qpg",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTM1OTUxYzE3MDdmMmUwZWIxZWMiLCJpYXQiOjE3NDA0NjEzMzMsImV4cCI6MTc0MDQ2NDkzM30.TWHR4gE461lxZEm_-2GgaNj92rvoWA8xAYoXkcNmNDg",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Juegos Nintendo Switch\",\r\n    \"text\": \"Los mejores juegos de la consola portatil de nintendo\",\r\n    \"email\": \"defaultadmin@gmail.com\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Tecnologia\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -70,7 +70,7 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTM1OTUxYzE3MDdmMmUwZWIxZWMiLCJpYXQiOjE3NDAxOTgzMDAsImV4cCI6MTc0MDIwMTkwMH0.O_aNrrNyQDvOvE62soP7ETxBcvmqSmSwBb_Bn-pTchw",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTM1OTUxYzE3MDdmMmUwZWIxZWMiLCJpYXQiOjE3NDA0NjE3NjEsImV4cCI6MTc0MDQ2NTM2MX0.B-N3KphIjwHzLKqCYeYYDB98GbF_bTBp01hf682Vcf0",
 						"type": "text"
 					}
 				],
@@ -84,7 +84,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/gestorOpinion/v1/category/67b94b5c3b0ede87f090f87b",
+					"raw": "http://localhost:3000/gestorOpinion/v1/category/67bd551d4d4924943bec798b",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -94,7 +94,7 @@
 						"gestorOpinion",
 						"v1",
 						"category",
-						"67b94b5c3b0ede87f090f87b"
+						"67bd551d4d4924943bec798b"
 					]
 				}
 			},

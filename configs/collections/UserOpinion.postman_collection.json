@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8357c3bf-96cb-4606-a32e-d7addaab9ec3",
+		"_postman_id": "b933bd69-6fee-447e-9d82-5f8c9b489a4d",
 		"name": "UserOpinion",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "37413959"
@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Jorge\",\r\n    \"lastname\": \"Peralta\",\r\n    \"username\": \"jperalta\",\r\n    \"email\": \"jperalta@kinal.edu.gt\",\r\n    \"password\": \"12345678\",\r\n    \"phone\": \"47888041\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Aldair\",\r\n    \"lastname\": \"Gonzales\",\r\n    \"username\": \"agonzales\",\r\n    \"email\": \"agonzales@kinal.edu.gt\",\r\n    \"password\": \"12345678\",\r\n    \"phone\": \"90227566\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

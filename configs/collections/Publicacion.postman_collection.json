@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6639723e-2eb4-4d0b-bd27-c43ecec464c4",
+		"_postman_id": "340c5e4d-2dd5-460a-8ebc-d2b0e386cc8d",
 		"name": "Publicacion",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "37413959"
@@ -13,13 +13,13 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTQ2MTgwMDBhOTMwYTYyNTg5NjIiLCJpYXQiOjE3NDAzNzI0NjcsImV4cCI6MTc0MDM3NjA2N30.1zidQJrCesiqCjgLw9IfCmgg5IuAlUuaz9C-3ZGTMyU",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JkNDI5ZDliMGE0MzBhZDZhYmIyZjMiLCJpYXQiOjE3NDA0NjE0NjEsImV4cCI6MTc0MDQ2NTA2MX0.nMpx9IjvqKFlUdmiviWXByxfqabtYOOGqoThispv6ac",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Juegos Nintendo Switch\",\r\n    \"title\": \"Vendo juegos usados\",\r\n    \"maintext\": \"Vendo el super smash bros ultimate\",\r\n    \"email\": \"amartinez@kinal.edu.gt\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Tecnologia\",\r\n    \"title\": \"Vendo accesorios de telefonos\",\r\n    \"maintext\": \"Se vende audifonos, protector etc\",\r\n    \"email\": \"agonzales@kinal.edu.gt\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -70,13 +70,13 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTQ2MTgwMDBhOTMwYTYyNTg5NjIiLCJpYXQiOjE3NDAzNzI0NjcsImV4cCI6MTc0MDM3NjA2N30.1zidQJrCesiqCjgLw9IfCmgg5IuAlUuaz9C-3ZGTMyU",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JkNDI5ZDliMGE0MzBhZDZhYmIyZjMiLCJpYXQiOjE3NDA0NjE0NjEsImV4cCI6MTc0MDQ2NTA2MX0.nMpx9IjvqKFlUdmiviWXByxfqabtYOOGqoThispv6ac",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Juegos Nintendo Switch\",\r\n    \"title\": \"Vendo juegos nuevos\",\r\n    \"maintext\": \"Vendo el mario kart\",\r\n    \"email\": \"amartinez@kinal.edu.gt\"\r\n}",
+					"raw": "{\r\n    \"title\": \"Real madrid fan\",\r\n    \"maintext\": \"Vendo camisas del real madrid\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -84,7 +84,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/gestorOpinion/v1/publication/67bbfd925265dc5d9dffcdc3",
+					"raw": "http://localhost:3000/gestorOpinion/v1/publication/67bd55ab4d4924943bec7993",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -94,7 +94,7 @@
 						"gestorOpinion",
 						"v1",
 						"publication",
-						"67bbfd925265dc5d9dffcdc3"
+						"67bd55ab4d4924943bec7993"
 					]
 				}
 			},

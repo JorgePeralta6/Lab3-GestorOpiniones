@@ -1,4 +1,5 @@
 import Category from "./category.model.js";
+import Publication from "../publications/publication.model.js"
 
 export const saveCategory = async(req, res) => {
     try{
@@ -6,7 +7,6 @@ export const saveCategory = async(req, res) => {
 
         const category = new Category({
             name: data.name,
-            text: data.text
         })
 
         await category.save();
@@ -35,7 +35,7 @@ export const getCategory = async(req, res) => {
                 .skip(Number(desde))
                 .limit(Number(limite))
         ])
-        
+
         return res.status(200).json({
             success: true,
             msg: "Category encontrada exitosamente",
@@ -52,23 +52,43 @@ export const getCategory = async(req, res) => {
 
 }
 
-export const deleteCategory = async(req, res) => {
-    const { id } = req.params;
-    try{
+export const deleteCategory = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const categoryToDelete = await Category.findById(id);
+        if (!categoryToDelete) {
+            return res.status(404).json({
+                success: false,
+                msg: "Categoría no encontrada"
+            });
+        }
+
+        let defaultCategory = await Category.findOne({ name: "Deportes" });
+        if (!defaultCategory) {
+            defaultCategory = new Category({
+                name: "Deportes",
+            });
+            await defaultCategory.save();
+        }
+
+        await Publication.updateMany({ category: id }, { category: defaultCategory._id });
+
         await Category.findByIdAndDelete(id);
 
         res.status(200).json({
             success: true,
-            msg: "Category eliminada con exitosamente"
-        })
-    }catch(error){
+            msg: "Categoría eliminada correctamente y publicaciones actualizadas"
+        });
+
+    } catch (error) {
         res.status(500).json({
             success: false,
-            msg: "Error al eliminar la category",
+            msg: "Error al eliminar la categoría",
             error: error.message || error
-        })
+        });
     }
-}
+};
 
 export const updateCategory = async(req, res) => {
     try {

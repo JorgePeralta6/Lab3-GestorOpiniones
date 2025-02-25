@@ -71,8 +71,7 @@ export const createCategoria = async() => {
 
         if(!categoriaExists){
             const categoriaDefault = new Category({
-                name: "Deportes",
-                text: "Viva el futbol"
+                name: "Deportes"
             });
 
             await categoriaDefault.save();

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "727af46f-cf26-415c-b20c-8a37dea42ff8",
+		"_postman_id": "d77ce5f0-192e-46c6-b00f-ed2d6d6c6a0a",
 		"name": "Comentario",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "37413959"
@@ -13,13 +13,13 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTQ2MTgwMDBhOTMwYTYyNTg5NjIiLCJpYXQiOjE3NDAyODI1NjUsImV4cCI6MTc0MDI4NjE2NX0.oIROSHls3P5mD05aL9NMDtQo9gxF8nydd-CqWq59qwo",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTQ2MTgwMDBhOTMwYTYyNTg5NjIiLCJpYXQiOjE3NDA0NjE3MDUsImV4cCI6MTc0MDQ2NTMwNX0.7YrRyfALmdpxirTrFSVJBclVUhsYvoJNI8EhkZAbjT4",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"comment\": \"Borra la cuenta\",\r\n    \"email\": \"amartinez@kinal.edu.gt\"\r\n}",
+					"raw": "{\r\n    \"title\": \"Real madrid fan\",\r\n    \"comment\": \"Es camisa original\",\r\n    \"email\": \"amartinez@kinal.edu.gt\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -46,7 +46,20 @@
 			"name": "GetComentario",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/gestorOpinion/v1/comment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorOpinion",
+						"v1",
+						"comment"
+					]
+				}
 			},
 			"response": []
 		},
@@ -57,12 +70,12 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTQ2MTgwMDBhOTMwYTYyNTg5NjIiLCJpYXQiOjE3NDAyODM2MzUsImV4cCI6MTc0MDI4NzIzNX0.W-hD9ZmFck1_jv7SU6sUWW7mnQhELPFBctyhyjDFWe0",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTQ2MTgwMDBhOTMwYTYyNTg5NjIiLCJpYXQiOjE3NDA0NTczMDAsImV4cCI6MTc0MDQ2MDkwMH0.L-q-g5hL7887VbiCyCSIO2mmUtSVVhCJHPXaSFTLdVo",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:3000/gestorOpinion/v1/comment/67ba9e4974314bd9304deda6",
+					"raw": "http://localhost:3000/gestorOpinion/v1/comment/67bd448904213daa4cb6ea0b",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -72,7 +85,7 @@
 						"gestorOpinion",
 						"v1",
 						"comment",
-						"67ba9e4974314bd9304deda6"
+						"67bd448904213daa4cb6ea0b"
 					]
 				}
 			},
@@ -85,13 +98,13 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTQ2MTgwMDBhOTMwYTYyNTg5NjIiLCJpYXQiOjE3NDAyODQzMzMsImV4cCI6MTc0MDI4NzkzM30.MwyhKJUj3FMHJ8n0p3rKwxmxFZeob18orQMB3ihHrSo",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JhOWViNDc0MzE0YmQ5MzA0ZGVkYWQiLCJpYXQiOjE3NDA0NTcyMzAsImV4cCI6MTc0MDQ2MDgzMH0.lme_s7pLmeEmNYK86PtzuSxei8Dyku-y02MV3tq9Ll4",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"comment\": \"Borra la cuenta\"\r\n}",
+					"raw": "{\r\n    \"comment\": \"Es cambio\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -99,7 +112,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/gestorOpinion/v1/comment/67ba9d85059c699e115a7cca",
+					"raw": "http://localhost:3000/gestorOpinion/v1/comment/67bd448904213daa4cb6ea0b",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -109,7 +122,7 @@
 						"gestorOpinion",
 						"v1",
 						"comment",
-						"67ba9d85059c699e115a7cca"
+						"67bd448904213daa4cb6ea0b"
 					]
 				}
 			},

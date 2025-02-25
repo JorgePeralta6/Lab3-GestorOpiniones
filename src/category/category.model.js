@@ -5,10 +5,6 @@ const categorySchema = Schema ({
         type: String,
         required: [true, 'Name is required'],
     },
-    text:{
-        type: String,
-        required: [true, 'The category need a text']
-    },
     status:{
         type: Boolean,
         default: true
