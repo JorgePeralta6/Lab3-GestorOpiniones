@@ -79,44 +79,31 @@ export const getPublication = async (req, res) => {
 } 
 
 export const deletePublication = async (req, res) => {
-    const { id } = req.params;
-
     try {
-        const publication = await Publication.findById(id).populate('comments');
-
+        const { id } = req.params;
+        const publication = await Publication.findById(id);
+ 
         if (!publication) {
             return res.status(404).json({
                 success: false,
                 message: 'Publicación no encontrada'
             });
         }
-
-        if (publication.author.toString() !== req.user.id) {
-            return res.status(403).json({
-                success: false,
-                message: 'No puedes eliminar esta publicación'
-            });
-        }
-
-        if (publication.comments && publication.comments.length > 0) {
-            await Comment.updateMany(
-                { _id: { $in: publication.comments.map(comment => comment._id) } },
-                { status: false }
-            );
-        }
-
-        await Publication.findByIdAndUpdate(id, { status: false });
-
+ 
+        const updatedPublication = await Publication.findByIdAndUpdate(id, { status: false }, { new: true });
+       
+        await Comment.updateMany({ publicationC: id }, { status: false });
+ 
         res.status(200).json({
             success: true,
-            message: 'Publicación eliminada totalmente'
+            message: 'Publicación y sus comentarios eliminados exitosamente',
+            publication: updatedPublication
         });
-
     } catch (error) {
         res.status(500).json({
             success: false,
-            msg: 'Error al eliminar la publicación',
-            error: error.message
+            message: 'Error al eliminar la publicación',
+            error
         });
     }
 };
