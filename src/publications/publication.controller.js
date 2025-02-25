@@ -1,9 +1,10 @@
 import { response } from "express";
 import Category from '../category/category.model.js';
 import User from '../users/user.model.js';
-import Publication from './publication.model.js'
+import Publication from './publication.model.js';
+import Comment from '../comments/comment.model.js'
 
-export const addPublication = async (req, res) => {
+export const savePublication = async (req, res) => {
     try {
         
         const data = req.body;
@@ -47,7 +48,7 @@ export const addPublication = async (req, res) => {
     }
 }
 
-export const publicationsView = async (req, res) => {
+export const getPublication = async (req, res) => {
     const {limite = 10, desde = 0} = req.query;
     const query = {status: true};
 
@@ -78,41 +79,48 @@ export const publicationsView = async (req, res) => {
 } 
 
 export const deletePublication = async (req, res) => {
-
     const { id } = req.params;
 
     try {
-        const publication = await Publication.findById(id);
+        const publication = await Publication.findById(id).populate('comments');
 
         if (!publication) {
             return res.status(404).json({
-                succes: false,
-                message: 'Publicacion no encontrada'
+                success: false,
+                message: 'Publicación no encontrada'
             });
         }
 
         if (publication.author.toString() !== req.user.id) {
-            return res.status(404).json({
-                succes: false,
-                message: 'Tu no puedes eliminar esta publicacion'
+            return res.status(403).json({
+                success: false,
+                message: 'No puedes eliminar esta publicación'
             });
         }
 
-        await Publication.findByIdAndUpdate(id, {status: false});
+        if (publication.comments && publication.comments.length > 0) {
+            await Comment.updateMany(
+                { _id: { $in: publication.comments.map(comment => comment._id) } },
+                { status: false }
+            );
+        }
+
+        // Desactivar la publicación
+        await Publication.findByIdAndUpdate(id, { status: false });
 
         res.status(200).json({
-            succes: true,
-            message: 'Publicacion eliminada'
-        })
+            success: true,
+            message: 'Publicación eliminada totalmente'
+        });
 
     } catch (error) {
         res.status(500).json({
-            succes: false,
-            msg: 'Error al eliminar la publicacion',
+            success: false,
+            msg: 'Error al eliminar la publicación',
             error: error.message
-        })
+        });
     }
-}
+};
 
 
 export const updatePublication = async (req, res  = response) => {

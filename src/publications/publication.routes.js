@@ -4,7 +4,7 @@ import { validarCampos } from '../middlewares/validar-campos.js';
 import { validarJWT } from "../middlewares/validar-jwt.js";
 
 
-import { addPublication, publicationsView, deletePublication, updatePublication } from './publication.controller.js';
+import { savePublication, getPublication, deletePublication, updatePublication } from './publication.controller.js';
 
 const router = Router();
 
@@ -15,10 +15,10 @@ router.post(
         check('email', 'This is not a valid email').not().isEmpty(),
         validarCampos
     ],
-    addPublication
+    savePublication
 );
 
-router.get("/", publicationsView);
+router.get("/", getPublication);
 
 router.delete(
     "/:id",
@@ -40,5 +40,4 @@ router.put(
     updatePublication
 );
     
-
 export default router;
