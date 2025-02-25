@@ -105,7 +105,6 @@ export const deletePublication = async (req, res) => {
             );
         }
 
-        // Desactivar la publicación
         await Publication.findByIdAndUpdate(id, { status: false });
 
         res.status(200).json({
