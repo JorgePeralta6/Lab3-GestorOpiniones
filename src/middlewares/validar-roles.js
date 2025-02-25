@@ -1,3 +1,5 @@
+import User from '../users/user.model.js'
+
 export const tieneRole = (...roles) => {
     return (req, res, next) => {
         if (!req.usuario) {
@@ -17,9 +19,24 @@ export const tieneRole = (...roles) => {
     }
 }
 
-export const validarAdminRole = (req, res, next) => {
-    if (!req.user || req.user.role !== 'Admin') {
-        return res.status(403).json({ msg: 'Acceso denegado. Se requiere rol de administrador.' });
+export const soloAdmin = async(req, res, next) => {
+    try {
+        const {id} = req.params;
+        const authenticatedUserAdmin = req.user.role;
+        
+        if(authenticatedUserAdmin !== "Admin"){
+            return res.status(403).json({
+                success: false,
+                msg: "Solo el ADMIN puede modificar una categoria"
+            })
+        }
+
+        next()
+    } catch (error) {
+        return res.json(500).json({
+            success: false,
+            msg: "Error al modificar la categoria",
+            error: error.message || error
+        })
     }
-    next();
-};
+}

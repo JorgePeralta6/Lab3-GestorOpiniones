@@ -9,11 +9,6 @@ const categorySchema = Schema ({
         type: String,
         required: [true, 'The category need a text']
     },
-    admin: {
-        type: Schema.Types.ObjectId,
-        ref: 'user',
-        required: true
-    },
     status:{
         type: Boolean,
         default: true

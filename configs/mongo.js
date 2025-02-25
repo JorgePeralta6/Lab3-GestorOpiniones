@@ -65,26 +65,22 @@ export const defaultAdmin = async() => {
     }
 }
 
-export const createCategoryd = async() => {
+export const createCategoria = async() => {
     try {
-        const categoryExists = await Category.findOne({ name: "Deportes"});
+        const categoriaExists = await Category.findOne({name: "Deportes"});
 
-        if (!categoryExists) {
-
-            const newCategory = new Category({
+        if(!categoriaExists){
+            const categoriaDefault = new Category({
                 name: "Deportes",
-                text: "Viva el futbol",
-                admin: "67b8135951c1707f2e0eb1ec",
-                status: true
+                text: "Viva el futbol"
             });
 
-            await newCategory.save();
-            console.log("Categoria creado con exito");
+            await categoriaDefault.save();
+            console.log("Categoria creada con exito");
         }else{
-            console.log("Ya hay categoria existente");
+            console.log(`Categoria ya existente`)
         }
-
     } catch (error) {
-        console.log("Error al crear la categoria", error.message);
+        console.log("Error al crear la categoria")
     }
 }

@@ -6,7 +6,7 @@ const CommentsSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: 'Publication',
         required: true
-    },
+    },  
     comment: {
         type: String,
         required: true,
