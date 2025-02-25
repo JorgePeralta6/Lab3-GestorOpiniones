@@ -1,6 +1,5 @@
 import Category from "./category.model.js";
 import Publication from "../publications/publication.model.js"
-import { createCategoria } from "../../configs/mongo.js";
 
 export const saveCategory = async(req, res) => {
     try{
@@ -65,9 +64,9 @@ export const deleteCategory = async (req, res) => {
             });
         }
 
-        const categoriaAgregada = await Category.findOne({name: "Deportes"})
+        const categoriaNew = await Category.findOne({name: "Deportes"})
 
-        await Publication.updateMany({ category: categoryToDelete._id }, { category: categoriaAgregada._id });
+        await Publication.updateMany({ category: categoryToDelete._id }, { category: categoriaNew._id });
 
         await Category.findByIdAndDelete(id);
 
