@@ -52,4 +52,22 @@
   "updatedAt": {
     "$date": "2025-02-23T04:06:12.576Z"
   }
+},
+{
+  "_id": {
+    "$oid": "67bd429d9b0a430ad6abb2f3"
+  },
+  "name": "Aldair",
+  "lastname": "Gonzales",
+  "username": "agonzales",
+  "email": "agonzales@kinal.edu.gt",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$AI1MneRP/9E8vzQ/cmM25Q$7tdEQlgTG0HauVPA5jL/esjkj4f+7IYbF3RtpIwBA8Q",
+  "phone": "90227566",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-02-25T04:10:05.359Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T04:10:05.359Z"
+  }
 }]
