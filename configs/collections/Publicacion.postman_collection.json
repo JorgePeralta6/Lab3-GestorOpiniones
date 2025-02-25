@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "340c5e4d-2dd5-460a-8ebc-d2b0e386cc8d",
+		"_postman_id": "73eae9af-2b92-43be-b84b-84998d87bf57",
 		"name": "Publicacion",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "37413959"
@@ -13,13 +13,13 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JkNDI5ZDliMGE0MzBhZDZhYmIyZjMiLCJpYXQiOjE3NDA0NjE0NjEsImV4cCI6MTc0MDQ2NTA2MX0.nMpx9IjvqKFlUdmiviWXByxfqabtYOOGqoThispv6ac",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTQ2MTgwMDBhOTMwYTYyNTg5NjIiLCJpYXQiOjE3NDA1MjAxMzQsImV4cCI6MTc0MDUyMzczNH0.iaXLntSAvXhZ3izdZBxuFB7c5Aj8Jw9fxlURpYojt7w",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Tecnologia\",\r\n    \"title\": \"Vendo accesorios de telefonos\",\r\n    \"maintext\": \"Se vende audifonos, protector etc\",\r\n    \"email\": \"agonzales@kinal.edu.gt\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Mundo\",\r\n    \"title\": \"Equipo de exploradores\",\r\n    \"maintext\": \"Se vende a buen precio\",\r\n    \"email\": \"amartinez@kinal.edu.gt\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -107,12 +107,12 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTQ2MTgwMDBhOTMwYTYyNTg5NjIiLCJpYXQiOjE3NDAzNzQ5MzEsImV4cCI6MTc0MDM3ODUzMX0.H16g5kuZZOMPW4SMe5NBSaEsRoUEqF0zRIuoNNt5V5Q",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTQ2MTgwMDBhOTMwYTYyNTg5NjIiLCJpYXQiOjE3NDA1MjAxMzQsImV4cCI6MTc0MDUyMzczNH0.iaXLntSAvXhZ3izdZBxuFB7c5Aj8Jw9fxlURpYojt7w",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:3000/gestorOpinion/v1/publication/67bc039e3e86a2148d036347",
+					"raw": "http://localhost:3000/gestorOpinion/v1/publication/67be3ad674eeb2264669bab5",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -122,7 +122,7 @@
 						"gestorOpinion",
 						"v1",
 						"publication",
-						"67bc039e3e86a2148d036347"
+						"67be3ad674eeb2264669bab5"
 					]
 				}
 			},

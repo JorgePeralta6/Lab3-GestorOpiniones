@@ -5,4 +5,20 @@
   "name": "Deportes",
   "status": true,
   "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67be391574eeb2264669ba92"
+  },
+  "name": "Animales",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67be3a7074eeb2264669baaf"
+  },
+  "name": "Mundo",
+  "status": true,
+  "__v": 0
 }]

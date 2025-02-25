@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d77ce5f0-192e-46c6-b00f-ed2d6d6c6a0a",
+		"_postman_id": "6c764e02-958a-45f9-bcfb-46f69c6fcf88",
 		"name": "Comentario",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "37413959"
@@ -13,13 +13,13 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTQ2MTgwMDBhOTMwYTYyNTg5NjIiLCJpYXQiOjE3NDA0NjE3MDUsImV4cCI6MTc0MDQ2NTMwNX0.7YrRyfALmdpxirTrFSVJBclVUhsYvoJNI8EhkZAbjT4",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JhOWViNDc0MzE0YmQ5MzA0ZGVkYWQiLCJpYXQiOjE3NDA1MjAyMDksImV4cCI6MTc0MDUyMzgwOX0.Y-pJbx0PJaq-Y7oR5k_ch7psP3RBotWrW91ohQLdoQQ",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"Real madrid fan\",\r\n    \"comment\": \"Es camisa original\",\r\n    \"email\": \"amartinez@kinal.edu.gt\"\r\n}",
+					"raw": "{\r\n    \"title\": \"Equipo de exploradores\",\r\n    \"comment\": \"Mochila marca china\",\r\n    \"email\": \"jcortes@kinal.edu.gt\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

@@ -16,4 +16,61 @@
   "updatedAt": {
     "$date": "2025-02-25T05:35:16.657Z"
   }
+},
+{
+  "_id": {
+    "$oid": "67be39a974eeb2264669ba9f"
+  },
+  "publicationC": {
+    "$oid": "67be2e4e1c0b9a6e0d55521c"
+  },
+  "comment": "Audifonos marca honda",
+  "author": {
+    "$oid": "67b814618000a930a6258962"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2025-02-25T21:44:09.383Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T21:44:09.383Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67be3a1074eeb2264669baa5"
+  },
+  "publicationC": {
+    "$oid": "67be2e4e1c0b9a6e0d55521c"
+  },
+  "comment": "Audifonos marca honda",
+  "author": {
+    "$oid": "67b814618000a930a6258962"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2025-02-25T21:45:52.524Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T21:45:52.524Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67be3b2274eeb2264669bac0"
+  },
+  "publicationC": {
+    "$oid": "67be3ad674eeb2264669bab5"
+  },
+  "comment": "Mochila marca china",
+  "author": {
+    "$oid": "67ba9eb474314bd9304dedad"
+  },
+  "status": false,
+  "createdAt": {
+    "$date": "2025-02-25T21:50:26.127Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T21:56:49.823Z"
+  }
 }]

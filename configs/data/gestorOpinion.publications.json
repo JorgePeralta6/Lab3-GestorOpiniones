@@ -22,4 +22,50 @@
   "updatedAt": {
     "$date": "2025-02-25T05:36:10.690Z"
   }
+},
+{
+  "_id": {
+    "$oid": "67be392074eeb2264669ba99"
+  },
+  "category": {
+    "$oid": "67be391574eeb2264669ba92"
+  },
+  "title": "Vendo accesorios de telefonos",
+  "maintext": "Se vende audifonos, protector etc",
+  "author": {
+    "$oid": "67bd429d9b0a430ad6abb2f3"
+  },
+  "comments": [],
+  "status": true,
+  "createdAt": {
+    "$date": "2025-02-25T21:41:52.074Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T21:41:52.074Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67be3ad674eeb2264669bab5"
+  },
+  "category": {
+    "$oid": "67be3a7074eeb2264669baaf"
+  },
+  "title": "Equipo de exploradores",
+  "maintext": "Se vende a buen precio",
+  "author": {
+    "$oid": "67b814618000a930a6258962"
+  },
+  "comments": [
+    {
+      "$oid": "67be3b2274eeb2264669bac0"
+    }
+  ],
+  "status": false,
+  "createdAt": {
+    "$date": "2025-02-25T21:49:10.784Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T21:56:49.831Z"
+  }
 }]
